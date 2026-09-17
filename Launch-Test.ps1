@@ -7,9 +7,9 @@ $labRoot = $PSScriptRoot
 $gameRoot = Split-Path -Parent $labRoot
 $testRoot = Join-Path $labRoot 'work\game'
 $testExe = Join-Path $testRoot 'pun.exe'
-if (-not (Test-Path -LiteralPath $testExe)) { throw 'A copia de teste ainda nao existe.' }
+if (-not (Test-Path -LiteralPath $testExe)) { throw 'The test copy does not exist yet.' }
 $running = Get-Process pun -ErrorAction SilentlyContinue
-if ($running) { throw 'Feche The Punisher antes de alternar a variante de teste.' }
+if ($running) { throw 'Close The Punisher before switching test variants.' }
 # A full UI installation must not be silently overwritten by the old prototype.
 $uiStatePath = Join-Path $labRoot 'reports\ui-installed.json'
 if (Test-Path -LiteralPath $uiStatePath) {
@@ -28,16 +28,16 @@ foreach ($item in $manifest) {
     $relative = $item.archive.Replace('/', '\')
     $original = Join-Path $gameRoot $relative
     if ((Get-FileHash -LiteralPath $original -Algorithm SHA256).Hash.ToLowerInvariant() -ne $item.source_sha256) {
-        throw "Arquivo original mudou: $relative"
+        throw "Source file changed: $relative"
     }
     $source = if ($Mode -eq 'Original') { $original } else { Join-Path (Join-Path $labRoot 'work\packages') $relative }
     $expectedHash = if ($Mode -eq 'Original') { $item.source_sha256 } else { $item.output_sha256 }
     if ((Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash.ToLowerInvariant() -ne $expectedHash) {
-        throw "Pacote nao corresponde ao manifesto: $relative"
+        throw "Package does not match its manifest: $relative"
     }
     $destination = [IO.Path]::GetFullPath((Join-Path $testRoot $relative))
     if (-not $destination.StartsWith($testRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
-        throw 'Destino fora da copia de teste.'
+        throw 'Destination is outside the test copy.'
     }
     Copy-Item -LiteralPath $source -Destination $destination -Force
 }
@@ -48,20 +48,20 @@ if (Test-Path -LiteralPath $layoutManifestPath) {
     $layoutRelative = $layoutManifest.archive.Replace('/', '\')
     $layoutOriginal = Join-Path $gameRoot $layoutRelative
     if ((Get-FileHash -LiteralPath $layoutOriginal -Algorithm SHA256).Hash.ToLowerInvariant() -ne $layoutManifest.source_sha256) {
-        throw 'O arquivo original de tabelas mudou.'
+        throw 'The original table archive has changed.'
     }
     $useBriefing = $Mode -eq 'Remastered' -and $Layout -eq 'Briefing'
     $layoutSource = if ($useBriefing) { Join-Path (Join-Path $labRoot 'work\briefing-packages') $layoutRelative } else { $layoutOriginal }
     $layoutHash = if ($useBriefing) { $layoutManifest.output_sha256 } else { $layoutManifest.source_sha256 }
     if ((Get-FileHash -LiteralPath $layoutSource -Algorithm SHA256).Hash.ToLowerInvariant() -ne $layoutHash) {
-        throw 'Pacote de briefing nao corresponde ao manifesto.'
+        throw 'Briefing package does not match its manifest.'
     }
     $layoutDestination = [IO.Path]::GetFullPath((Join-Path $testRoot $layoutRelative))
     if (-not $layoutDestination.StartsWith($testRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
-        throw 'Destino de layout fora da copia de teste.'
+        throw 'Layout destination is outside the test copy.'
     }
     Copy-Item -LiteralPath $layoutSource -Destination $layoutDestination -Force
 } elseif ($Layout -eq 'Briefing') {
-    throw 'Execute tools/build_briefing.py antes de usar este layout.'
+    throw 'Run tools/build_briefing.py before using this layout.'
 }
 Start-Process -FilePath $testExe -WorkingDirectory $testRoot

@@ -1,53 +1,63 @@
 # The Punisher Remaster Lab
 
-Ferramentas e pesquisa para melhorar a interface e os recursos visuais de **The Punisher (PC, 2005)**, com entregas pequenas e reversíveis.
+![Status: Work in Progress](https://img.shields.io/badge/status-Work%20in%20Progress-yellow)
+[![Source checks](https://github.com/pedrobragabes/the-punisher-remaster/actions/workflows/source-checks.yml/badge.svg)](https://github.com/pedrobragabes/the-punisher-remaster/actions/workflows/source-checks.yml)
 
-**Estado: experimental. Não existe uma versão jogável do pacote completo aprovada.** O primeiro pacote integrado de interface apresentou travamento na abertura. As ferramentas de inventário e as verificações de arquivos estão disponíveis; os resultados visuais ainda precisam ser validados no jogo.
+An experimental modding and research project for **The Punisher (PC, 2005)**, focused on readable UI, improved widescreen presentation, and incremental visual upgrades.
 
-## Primeira entrega
+> **WORK IN PROGRESS — Development tools, not a playable release.**
+> The integrated prototype has unresolved startup and menu-transition failures. Successful asset conversion or CI checks do not establish in-game compatibility.
 
-Concluir **Apartment / menu principal** com fonte legível, papel proporcional e navegação funcionando em 1920×1080 e 2560×1440. Publicar essa etapa separadamente, sem esperar briefing, HUD, vídeos ou todas as fases.
+## Current focus
 
-- [Roadmap e versões previstas](ROADMAP.md)
-- [Estado real dos testes](docs/STATUS.md)
-- [Preparação do ambiente](docs/SETUP.md)
-- [Formato dos arquivos e limitações](docs/FORMATS.md)
-- [Critérios para publicar uma versão](docs/RELEASING.md)
-- [Issues](https://github.com/pedrobragabes/the-punisher-remaster/issues) e [milestones](https://github.com/pedrobragabes/the-punisher-remaster/milestones)
+Deliver a small, independently testable **Apartment / main-menu update**: readable text, proportionate paper panels, consistent navigation, and verified behavior at **1920×1080** and **2560×1440**. This milestone does not require every submenu, briefing video, or level to be finished.
 
-## O que já existe
+The latest user feedback confirms that paper scaling is visible in a diagnostic build, while text remains too small, the background appears pillarboxed, and entering War Zone crashes. These are open development items, not completed features.
 
-- Inventário e leitura de VPP, com extração local e reconstrução verificada de pacotes suportados.
-- Catálogo, decodificação e substituição experimental de texturas CEG.
-- Inspeção de fontes VFNT v2 e protótipo de ampliação de atlas/métricas.
-- Protótipos de layout de menus, briefing e HUD.
-- Conversão local de vídeos de menus/briefing com ferramentas oficiais Bink.
-- Pesquisa sobre o cálculo de dimensões dos vídeos e patch experimental restrito a uma versão do executável.
-- Instalação/reversão na cópia de teste com verificação de hashes.
+## Project status
 
-Foram catalogados localmente 167 VPP, 68.395 entradas e 26.593 registros de textura. O experimento integrado gerou 632 imagens ampliadas, 18 fontes e 71 vídeos; **essas contagens indicam arquivos processados, não funcionalidades aprovadas**.
+| Area | Current state |
+|---|---|
+| Archive tooling | Local inventory, extraction, rebuilding, and integrity checks implemented |
+| Texture and font tooling | Experimental conversion pipelines; runtime validation incomplete |
+| Main menu | Partial visual progress; typography, panel proportions, and widescreen behavior need work |
+| Briefing and HUD | Prototypes only; not approved for use |
+| Menu videos | Converted locally and checked externally; in-game integration remains unverified |
+| Playable release | **Not available** |
 
-## Conteúdo publicado
+Local research covers **167 VPP archives**, **68,395 entries**, and **26,593 texture records**. An integrated experiment processed 632 images, 18 font files, and 71 videos. These numbers describe generated resources, **not validated features**.
 
-Código, documentação e planejamento. Não contém o jogo, executáveis modificados, bibliotecas comerciais, perfis, texturas extraídas, vídeos ou ferramentas da RAD. Os testes que dependem desses arquivos são executados localmente com uma instalação obtida pelo usuário.
+## Documentation and tracking
 
-Os recursos são gerados em `work/`, e os relatórios em `reports/`; essas saídas não são versionadas. O código assume que esta pasta está diretamente dentro da pasta do jogo. Veja [SETUP](docs/SETUP.md) antes de executar.
+- [Roadmap](ROADMAP.md) — staged delivery plan
+- [Current status](docs/STATUS.md) — evidence, regressions, and limitations
+- [Local setup](docs/SETUP.md) — development environment
+- [File formats](docs/FORMATS.md) — research notes and supported cases
+- [Release criteria](docs/RELEASING.md) — requirements for a testable build
+- [Contributing](CONTRIBUTING.md)
+- [Issues](https://github.com/pedrobragabes/the-punisher-remaster/issues) · [Milestones](https://github.com/pedrobragabes/the-punisher-remaster/milestones)
 
-## Desenvolvimento por etapas
+## What is included
 
-1. Reproduzir e eliminar o travamento de abertura.
-2. Entregar o menu principal.
-3. Acrescentar missões, arsenal, upgrades e demais submenus.
-4. Corrigir briefing e depois HUD/legendas em Crackhouse.
-5. Integrar vídeos em resolução maior após validar o renderizador.
+Source code, documentation, and project planning. The repository does **not** contain the game, modified executables, proprietary libraries, extracted textures, videos, saves, or RAD tools. Asset-dependent tests run locally against a user-provided installation.
 
-Ampliação por reamostragem preserva a arte, mas não recupera detalhes perdidos. Uma restauração artística posterior é trabalho separado. Não há promessa de prazo ou de remaster completo em uma única entrega.
+Generated resources belong in `work/`; local reports belong in `reports/`. Both are excluded from version control. The current tools expect this repository to be a direct child of the game installation directory; read the setup guide before running them.
 
-## Referências técnicas
+## Delivery approach
 
-- [Gibbed.Volition, branch punisher](https://github.com/UncleHunk/Gibbed.Volition/tree/punisher): pesquisa sobre VPP.
-- [CEGTool](https://github.com/gdkchan/CEGTool): referência de CEG e compressão de texturas.
-- [WidescreenFixesPack](https://github.com/ThirteenAG/WidescreenFixesPack): comportamento da correção widescreen.
-- [RAD Video Tools](https://www.radgametools.com/bnkdown.htm): conversão Bink local; observar os termos da ferramenta.
+1. Establish a reproducible baseline and isolate regressions.
+2. Release the main menu as a standalone milestone.
+3. Expand to mission selection, the armory, upgrades, and other submenus.
+4. Validate briefing, HUD, subtitles, and a limited Crackhouse texture set.
+5. Integrate higher-resolution menu videos after renderer compatibility is established.
 
-Projeto não oficial, sem vínculo com os titulares do jogo.
+Resampling preserves and enlarges existing artwork; it does not recover missing detail. Artistic restoration is a separate task. Controller support inspired by the PS2 version is a future research direction, not an implemented or scheduled feature.
+
+## Technical references
+
+- [Gibbed.Volition — punisher branch](https://github.com/UncleHunk/Gibbed.Volition/tree/punisher): VPP format research.
+- [CEGTool](https://github.com/gdkchan/CEGTool): CEG and texture-compression reference.
+- [WidescreenFixesPack](https://github.com/ThirteenAG/WidescreenFixesPack): existing widescreen behavior.
+- [RAD Video Tools](https://www.radgametools.com/bnkdown.htm): local Bink conversion, subject to the tool's terms.
+
+This is an unofficial project with no affiliation with the game's rights holders.

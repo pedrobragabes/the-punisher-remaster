@@ -1,15 +1,15 @@
-# Critérios de entrega
+# Release Acceptance Criteria
 
-Uma entrega pequena e funcional vale mais que um pacote grande não testado. Não publicar uma release instalável só porque o builder terminou.
+**WIP: no playable release is currently available.** A completed build pipeline is not sufficient to publish an installable release.
 
-- [ ] Baseline original abre e chega ao menu na cópia de teste.
-- [ ] Funcionalidade da milestone testada em 1920×1080 e 2560×1440.
-- [ ] Navegação, textos longos, símbolos e seleção conferidos.
-- [ ] Reinício do jogo e retorno ao menu conferidos.
-- [ ] Componentes fora da entrega permanecem opcionais.
-- [ ] Rollback testado, sem sobrescrever perfis.
-- [ ] Antes/depois e reprodução registrados sem dados pessoais.
-- [ ] Limitações e regressões documentadas.
-- [ ] Distribuição contém apenas código ou patches apropriados, sem arquivos completos do jogo ou ferramentas comerciais.
+- [ ] The original baseline starts and reaches the menu in the isolated copy.
+- [ ] The milestone's features pass at 1920×1080 and 2560×1440.
+- [ ] Navigation, long text, symbols, selection, and hitboxes are checked.
+- [ ] Restart and return-to-menu flows work.
+- [ ] Components outside the milestone remain optional.
+- [ ] Rollback is tested without overwriting profiles or saves.
+- [ ] Before/after evidence and reproduction steps exclude personal data.
+- [ ] Known limitations and regressions are documented.
+- [ ] Distribution includes appropriate source or patches, not full game files or proprietary tools.
 
-Primeira versão prevista: `v0.1.0-alpha`, apenas o menu principal após M0. Não depende do pacote integrado de 632 imagens ou dos vídeos. Tags e releases serão criadas quando os critérios forem cumpridos; não há release jogável na publicação inicial.
+The proposed first release is `v0.1.0-alpha`: the main menu only, after M0 is resolved. It does not require the full image pack or converted videos. Create tags and releases only after the acceptance criteria are met.

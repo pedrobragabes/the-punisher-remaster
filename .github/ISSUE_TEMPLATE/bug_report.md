@@ -1,22 +1,22 @@
 ---
-name: Regressão ou defeito visual
-about: Relatar um problema reproduzível
+name: Runtime or visual regression
+about: Report a reproducible problem in this WIP project
 title: "[Bug] "
 labels: bug
 ---
 
-## Ambiente
+## Environment
 
-Resolução, hash da versão do jogo, versão do widescreen fix e componentes habilitados. Não inclua saves ou caminhos pessoais.
+Resolution, executable hash, widescreen-fix version, and enabled components. Do not include saves or personal paths.
 
-## Reprodução
+## Steps to reproduce
 
-1. Tela/missão inicial:
-2. Ação:
-3. Resultado observado:
+1. Starting screen or mission:
+2. Action:
+3. Observed result:
 
-## Resultado esperado
+## Expected behavior
 
-## Evidência
+## Evidence
 
-Inclua capturas ou trechos relevantes que possa compartilhar. Informe se também acontece com os arquivos originais.
+Include relevant screenshots or excerpts you can share. State whether the same problem occurs with the original files. Distinguish file-integrity checks from in-game testing.

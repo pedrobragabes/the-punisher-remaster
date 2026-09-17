@@ -1,31 +1,40 @@
-# Estado em 16/09/2026
+# Project Status
 
-## Verificado em arquivos
+**Work in Progress — updated September 16, 2026.** No integrated playable build has passed acceptance testing.
 
-- Inventário de 167 VPP e 68.395 entradas.
-- Round-trip de pacote sem alterações: byte a byte idêntico.
-- Validação de entradas reconstruídas e preservação dos recursos não alterados.
-- 18 arquivos de fonte com métricas/coordenadas ampliadas e contagem de glifos preservada.
-- 71 vídeos com hashes, quadros, taxa e quantidade de trilhas conferidos; primeiro e último quadro decodificados.
-- 24 casos do cálculo de dimensões testados em emulação x86, com preservação de registradores, flags e pilha.
+## Verified outside the game
 
-## Não aprovado em execução
+- Inventory of 167 VPP archives and 68,395 entries.
+- Byte-identical round-trip for an unchanged archive.
+- Rebuilt entry-content checks and preservation of untouched resources.
+- Metrics/coordinate checks for 18 enlarged font files, preserving glyph counts.
+- Hashes, frame counts, timebases, and audio-track counts for 71 converted videos; first and last frames decoded.
+- 24 x86-emulated video-sizing cases, including register, flag, and stack preservation.
 
-O pacote integrado instalado em uma cópia isolada travou na abertura. O usuário confirmou a tela travada/preta. O processo foi observado como não responsivo.
+Source-check CI covers Python and PowerShell syntax only. It does not test rendering, gameplay, or asset compatibility.
 
-O diagnóstico começou com executável original e recursos novos; a abertura ainda não foi aprovada. Um teste subsequente com `misc.vpp` original e os demais componentes modificados encerrou com exceção `0xc0000005`, no deslocamento `0x00157d64` de `pun.exe`. **Isso não identifica sozinho o componente causador.**
+## Runtime evidence and open regressions
 
-Os 119 arquivos do pacote integrado foram revertidos para os originais na cópia de teste. Não foi concluída uma nova validação visual de baseline após essa reversão. As saídas experimentais continuam locais para investigação.
+The integrated prototype was reported as frozen/black at startup, and the process was observed as unresponsive. Isolation began with the original executable and modified resources; no successful integrated startup was established.
 
-O instalador agora exige `-AllowUnvalidated` para reaplicar o experimento conhecido como instável. Isso não é um fluxo de instalação recomendado ao jogador.
+A subsequent test with the original executable and `misc.vpp`, but other modified components, exited with `0xc0000005` at executable offset `0x00157d64`. This does not identify the responsible component by itself.
 
-## Limites conhecidos
+Later user feedback shows visible paper scaling in a diagnostic main-menu capture, but text remains too small, the background appears restricted to 4:3, and entering War Zone crashes. The precise component set used for that capture has not been independently confirmed. Partial visual progress is not a stability pass.
 
-- Reamostragem 2× e Bink bicúbico não recuperam detalhes perdidos.
-- Duas barras mínimas da mira têm layout de textura ainda não suportado.
-- O patch de executável aceita apenas o SHA-256 documentado no código; não foi aprovado em integração.
-- Há formatos/registros CEG que as ferramentas deliberadamente não alteram.
-- Imagens de cenário e fundo geradas anteriormente não estão incluídas no repositório.
-- Os nove vídeos avulsos da raiz de `movies` não fazem parte do lote de 71 menus/briefings.
+The 119 files from the integrated pack were restored to their originals in the isolated test copy. A complete baseline navigation test has not yet been recorded. Generated experimental outputs remain local for investigation.
 
-**Próxima conclusão válida:** baseline estável e causa do travamento isolada. Depois disso, o menu Apartment poderá ser publicado separadamente.
+The installer requires `-AllowUnvalidated` to reapply the known-unstable integrated experiment. This is a developer safeguard, not a recommended player installation flow.
+
+## Known limitations
+
+- 2× resampling and bicubic Bink conversion do not recover missing detail.
+- Two minimal reticle-bar textures use a layout the editor does not yet support.
+- The executable patch is restricted to the hash specified in its source and has not passed integration testing.
+- Unsupported or ambiguous CEG records are deliberately left unchanged.
+- Previously generated background/level artwork is not distributed in this repository.
+- Nine standalone videos in the root `movies` directory are outside the 71-video navigation/briefing batch.
+- PS2-style controller support is a future research item, not an implemented feature.
+
+## Next acceptance gate
+
+Establish a reproducible baseline, identify the failure-inducing component set, then validate and release Apartment independently. Track this work in [M0](https://github.com/pedrobragabes/the-punisher-remaster/milestone/1) and [v0.1](https://github.com/pedrobragabes/the-punisher-remaster/milestone/2).

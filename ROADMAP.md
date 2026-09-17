@@ -1,61 +1,64 @@
-# Roadmap
+# Development Roadmap
 
-Cada milestone resulta em uma entrega verificável. Uma funcionalidade só é concluída depois de funcionar dentro do jogo; exportar arquivos não fecha a issue.
+**Work in Progress.** Milestones are acceptance gates, not delivery dates. A feature is complete only after it works in the game; generating files does not close its issue.
 
-| Milestone | Resultado | Depende de |
+| Milestone | Deliverable | Prerequisites |
 |---|---|---|
-| [M0 — Base reproduzível](https://github.com/pedrobragabes/the-punisher-remaster/milestone/1) | Abertura estável, isolamento de regressões e rollback confiável | — |
-| [v0.1 — Menu principal](https://github.com/pedrobragabes/the-punisher-remaster/milestone/2) | Apartment, fonte, papel, seleção e perfil legíveis em 1080p/1440p | M0 |
-| [v0.2 — Submenus](https://github.com/pedrobragabes/the-punisher-remaster/milestone/3) | War Zone, Armory, Upgrades, diário, extras e opções validados | v0.1 |
-| [v0.3 — Briefing](https://github.com/pedrobragabes/the-punisher-remaster/milestone/4) | Texto, objetivos e janela de vídeo sem sobreposição | v0.1 e M0 |
-| [v0.4 — HUD e Crackhouse](https://github.com/pedrobragabes/the-punisher-remaster/milestone/5) | HUD, legendas e texturas selecionadas na primeira missão | M0; briefing testável |
-| [v0.5 — Vídeos dos menus](https://github.com/pedrobragabes/the-punisher-remaster/milestone/6) | Transições e briefings maiores, enquadramento e áudio preservados | v0.2 e v0.3 |
+| [M0 — Reproducible baseline](https://github.com/pedrobragabes/the-punisher-remaster/milestone/1) | Stable startup, isolated regressions, and reliable rollback | None |
+| [v0.1 — Main menu](https://github.com/pedrobragabes/the-punisher-remaster/milestone/2) | Apartment, readable fonts, proportionate paper, profile flow, and navigation | M0 |
+| [v0.2 — Submenus](https://github.com/pedrobragabes/the-punisher-remaster/milestone/3) | War Zone, Armory, Upgrades, journal, extras, and options | v0.1 |
+| [v0.3 — Mission briefing](https://github.com/pedrobragabes/the-punisher-remaster/milestone/4) | Objectives, description, and video without overlap | M0; font work from v0.1 |
+| [v0.4 — HUD and Crackhouse](https://github.com/pedrobragabes/the-punisher-remaster/milestone/5) | Readable HUD/subtitles and a validated small texture set | M0; testable briefing flow |
+| [v0.5 — Menu videos](https://github.com/pedrobragabes/the-punisher-remaster/milestone/6) | Higher-resolution transitions and briefings with correct framing and audio | v0.2 and v0.3 |
 
-Sequência inicial: [isolar travamento #1](https://github.com/pedrobragabes/the-punisher-remaster/issues/1), [componentes #2](https://github.com/pedrobragabes/the-punisher-remaster/issues/2), [fontes #4](https://github.com/pedrobragabes/the-punisher-remaster/issues/4), [Apartment #5](https://github.com/pedrobragabes/the-punisher-remaster/issues/5), [navegação #6](https://github.com/pedrobragabes/the-punisher-remaster/issues/6) e [primeira entrega #7](https://github.com/pedrobragabes/the-punisher-remaster/issues/7).
+## Immediate sequence
 
-## M0 — Base reproduzível
+[Isolate the failure #1](https://github.com/pedrobragabes/the-punisher-remaster/issues/1) → [separate components #2](https://github.com/pedrobragabes/the-punisher-remaster/issues/2) → [validate fonts #4](https://github.com/pedrobragabes/the-punisher-remaster/issues/4) → [refine Apartment #5](https://github.com/pedrobragabes/the-punisher-remaster/issues/5) → [verify navigation #6](https://github.com/pedrobragabes/the-punisher-remaster/issues/6) → [prepare the first release #7](https://github.com/pedrobragabes/the-punisher-remaster/issues/7).
 
-- Reproduzir o travamento do pacote integrado e registrar a matriz de testes.
-- Separar executável, fontes, imagens, tabelas e vídeos em componentes instaláveis.
-- Conferir cópia original e cópia de teste; manter saves fora da instalação do mod.
-- Documentar versões, dependências e restauração.
+## M0 — Reproducible baseline
 
-## v0.1 — Menu principal
+- Reproduce startup and transition failures with a recorded component matrix.
+- Separate executable, fonts, textures, tables, and videos into independently testable components.
+- Verify original/test copies and preserve profiles and saves.
+- Record versions, dependencies, and rollback steps.
 
-- Fonte maior com todos os glifos e símbolos corretos.
-- Papel e lista com tamanho coerente, sem linhas cortadas.
-- Apartment com composição preservada.
-- Entrada/saída de perfil e seleção por teclado/mouse.
-- Comparação antes/depois em 1080p e 1440p; não depende dos novos vídeos.
+## v0.1 — Main menu
+
+- Increase text size while preserving glyphs, symbols, spacing, and line breaks.
+- Reduce excess paper area and align it with the menu list.
+- Add a documented widescreen background mode; assess cropping versus stretching explicitly.
+- Validate profile selection and keyboard/mouse navigation at 1080p and 1440p.
+- Publish this milestone independently of converted videos.
 
 ## v0.2 — Submenus
 
-- Missões: lista completa, nomes longos, estados e mapas.
-- Arsenal: armas/pistolas, contorno de seleção e descrições.
-- Upgrades: colunas, preços, pontos e descrições sem corte.
-- Diário/extras: retratos, jornais, galerias, opções e controles.
+- War Zone: resolve the reported entry crash; validate all missions, states, maps, and descriptions.
+- Armory: validate weapon/pistol panels, selection outlines, and descriptions.
+- Upgrades: align names, levels, costs, points, and detail text.
+- Journal and extras: validate portraits, newspapers, galleries, and grid geometry.
+- Options and controls: verify labels, values, and navigation.
 
-## v0.3 — Briefing
+## v0.3 — Mission briefing
 
-- Reproduzir a sobreposição observada em Crackhouse.
-- Separar layout da interface do cálculo de tamanho do vídeo.
-- Validar objetivos, desafio, troca de armas e início da missão nas duas resoluções.
-- Manter vídeos originais como fallback independente da correção de texto.
+- Reproduce and eliminate the Crackhouse text/video overlap.
+- Separate text layout from the engine's video-size calculations.
+- Validate objectives, challenge mode, weapon selection, and mission entry.
+- Keep original videos available as an independent fallback.
 
-## v0.4 — HUD e Crackhouse
+## v0.4 — HUD and Crackhouse
 
-- Vida, slaughter, munição, pontuação, mira e mensagens alinhadas.
-- Legendas legíveis, sem cortar frases longas.
-- Uma seleção pequena de texturas aprovada por comparação no cenário.
-- Carregar, jogar, salvar/recarregar e voltar ao menu sem regressões.
+- Align health, slaughter, ammunition, score, reticles, and interaction messages.
+- Make subtitles readable without clipping long lines.
+- Review a small texture set in a reproducible area of the first mission.
+- Test gameplay, save/reload, and return to the menu.
 
-## v0.5 — Vídeos
+## v0.5 — Menu videos
 
-- Validar os 71 vídeos convertidos no renderizador antigo, além do decodificador externo.
-- Preservar quadros, taxa, áudio, proporção e continuidade das transições.
-- Documentar o limite da ampliação; não chamar interpolação de detalhe recuperado.
-- Cinemáticas, trailers e créditos avulsos ficam para uma etapa posterior.
+- Validate all 71 converted navigation/briefing videos in the legacy renderer.
+- Preserve frame count, timing, audio, aspect ratio, and transition continuity.
+- Document the difference between resampling and recovered detail.
+- Standalone cinematics, trailers, and credits are outside this milestone.
 
-## Depois das primeiras entregas
+## Future research
 
-Restauração artística de materiais, personagens e outras fases; investigação de limites de memória, outras proporções de tela e distribuição por patches. Cada expansão depende de estabilidade, não da quantidade de arquivos gerados.
+PS2-inspired controller support, additional aspect ratios, memory budgets, artistic material/character restoration, further levels, and patch-based distribution. Controller work would require analog movement/aiming, menu navigation, bindings, button prompts, and device testing. These items have no committed schedule.

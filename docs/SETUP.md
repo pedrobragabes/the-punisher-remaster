@@ -1,32 +1,35 @@
-# Ambiente local
+# Local Development Setup
 
-Use uma instalação do jogo no Windows. Clone este repositório numa subpasta `remaster-lab` dentro dela. `punisher_lab.py` identifica a pasta pai como instalação de origem.
+> **WIP:** the integrated pack has known runtime failures. This guide is for development and controlled testing, not a playable-release installation.
+
+Use a Windows installation of the game. Clone this repository into a direct child folder named `remaster-lab`; `punisher_lab.py` treats its parent directory as the source installation.
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+New-Item -ItemType Directory -Force work | Out-Null
 .\.venv\Scripts\python.exe tools\punisher_lab.py inventory
 .\.venv\Scripts\python.exe tools\catalog_textures.py
 .\.venv\Scripts\python.exe tools\verify.py
 ```
 
-Os experimentos de UI/vídeos também usam `requirements-ui.txt`. Relatórios locais são ignorados pelo Git.
+UI/video experiments also require `requirements-ui.txt`. Local reports are ignored by Git.
 
-Crie uma cópia completa e separada do jogo em `work/game`, excluindo a própria pasta `remaster-lab` da cópia para evitar recursão. Não execute os instaladores sobre a pasta original. A criação/verificação automatizada dessa cópia ainda está no backlog. Crie a pasta `work` antes de executar `verify.py`.
+Create a complete, separate game copy at `work/game`, excluding `remaster-lab` itself to avoid recursive copying. Do not target the source installation with an installer. Automated test-copy creation and verification remain tracked development tasks.
 
-| Ferramenta | Finalidade |
+| Tool | Purpose |
 |---|---|
-| `inspect_ui.py` | Inventário de tabelas e fontes |
-| `build_poc.py` | Texturas experimentais; requer imagens locais não distribuídas |
-| `build_briefing.py` | Experimento antigo de layout; insuficiente para corrigir o briefing |
-| `build_ui_pack.py` | Experimento integrado de atlas, fontes e tabelas |
-| `build_menu_videos.py` | Conversão de menus/briefings com Bink 1 |
-| `build_video_fix.py` | Patch de tamanho dos vídeos, restrito por hash |
-| `verify_ui_pack.py` | Fontes, hashes e aritmética x86 |
-| `verify_menu_videos.py` | Verificação e decodificação de quadros extremos |
+| `inspect_ui.py` | Inspect layout tables and font structures |
+| `build_poc.py` | Texture experiments requiring local, undistributed images |
+| `build_briefing.py` | Earlier layout-only experiment; insufficient to fix briefing behavior |
+| `build_ui_pack.py` | Experimental atlas, font, texture, and layout pipeline |
+| `build_menu_videos.py` | Bink 1 menu/briefing conversion |
+| `build_video_fix.py` | Version-locked video-size patch |
+| `verify_ui_pack.py` | Font, hash, and emulated x86 checks |
+| `verify_menu_videos.py` | Video checks and endpoint-frame decoding |
 
-Obtenha [RAD Video Tools](https://www.radgametools.com/bnkdown.htm) para a conversão e disponibilize `radvideo64.exe` em `work/radtools/portable/`, com os componentes exigidos pela ferramenta. Ela não é fornecida no repositório.
+For video conversion, obtain [RAD Video Tools](https://www.radgametools.com/bnkdown.htm) and provide `radvideo64.exe` at `work/radtools/portable/`, together with its required components. RAD tools are not bundled here.
 
-**O pacote integrado tem falha de abertura conhecida.** Construí-lo não o torna uma versão jogável. Consulte [STATUS](STATUS.md). Reversão, quando houver manifestos locais completos: `Install-UI.ps1 -Restore`.
+Building successfully does not establish runtime compatibility. Read [STATUS](STATUS.md). With complete local manifests, `Install-UI.ps1 -Restore` restores this pack's files in the test copy. Do not use `-AllowUnvalidated` outside a controlled diagnostic test.
 
-Não versione arquivos do jogo, saídas, saves ou relatórios com caminhos pessoais. Antes de publicar, confira `git diff --cached` e a lista de arquivos.
+Never commit game assets, generated outputs, saves, or reports containing personal paths. Review the staged file list and `git diff --cached` before publishing.

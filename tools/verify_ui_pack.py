@@ -50,7 +50,7 @@ def main():
         entries={e['name']:e for e in vpp_index(src)['entries']};d=read_entry(src,entries['fonts.ceg'])
         f=inspect_font(read_entry(src,entries['interface.vf2']))
         e=next(e for e in ceg_index(d)['entries'] if e['name']=='interface.vbm');atlas=decode_texture(d,e)
-        y=50+idx*170;draw.text((20,y-25),'ORIGINAL' if idx==0 else 'PACOTE 2x - recursos extraidos, nao captura do jogo',fill='white')
+        y=50+idx*170;draw.text((20,y-25),'ORIGINAL' if idx==0 else '2x PACK - extracted resources, not an in-game capture',fill='white')
         for text in ['WAR ZONE   ARMORY   UPGRADES','OBJECTIVES: KILL THE CRACKHOUSE LEADER']:
             x=20
             for c in text:
