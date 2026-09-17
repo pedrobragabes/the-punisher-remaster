@@ -38,3 +38,6 @@ The installer requires `-AllowUnvalidated` to reapply the known-unstable integra
 ## Next acceptance gate
 
 Establish a reproducible baseline, identify the failure-inducing component set, then validate and release Apartment independently. Track this work in [M0](https://github.com/pedrobragabes/the-punisher-remaster/milestone/1) and [v0.1](https://github.com/pedrobragabes/the-punisher-remaster/milestone/2).
+# Latest isolated test
+
+The user confirmed that the configuration without the integrated improvements works normally. A subsequent font-only candidate reached Apartment with visibly larger interface text. Row spacing still needs correction; War Zone navigation has not been confirmed. See [isolated menu diagnostics](MENU-STAGES.md) for the exact scope and pending checks. This does not resolve the integrated prototype failures below.
