@@ -22,7 +22,8 @@ foreach ($item in $manifest.components) {
     $expected = if ($active) { $item.output_sha256 } else { $item.source_sha256 }
     if ((Get-FileHash -LiteralPath $source).Hash.ToLowerInvariant() -ne $expected) { throw "Component mismatch: $relative" }
     $current = (Get-FileHash -LiteralPath $target).Hash.ToLowerInvariant()
-    if ($current -notin @($item.source_sha256,$item.output_sha256)) { throw "Unknown test archive; restore the integrated pack first: $relative" }
+    $known = @($item.source_sha256,$item.output_sha256) + @($item.previous_output_sha256)
+    if ($current -notin $known) { throw "Unknown test archive; restore the integrated pack first: $relative" }
     $operations += @{source=$source;target=$target;hash=$expected}
 }
 # Preserve the previous stage so a partial copy can be rolled back.
@@ -44,5 +45,5 @@ try {
 }
 @{stage=$Stage;in_game_verified=$false;updated_at=(Get-Date).ToString('o')} |
     ConvertTo-Json | Set-Content -LiteralPath (Join-Path $PSScriptRoot 'reports/menu-stage-installed.json') -Encoding utf8
-Write-Output "Active menu stage: $Stage. No video, HUD, or executable changes were applied."
+Write-Output "Active menu stage: $Stage. Menu includes a version-locked Apartment row-height patch. Videos and HUD are unchanged."
 if ($Launch) { Start-Process -FilePath (Join-Path $testRoot 'pun.exe') -WorkingDirectory $testRoot }
