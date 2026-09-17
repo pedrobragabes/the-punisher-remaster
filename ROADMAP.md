@@ -4,12 +4,14 @@ Cada milestone resulta em uma entrega verificável. Uma funcionalidade só é co
 
 | Milestone | Resultado | Depende de |
 |---|---|---|
-| M0 — Base reproduzível | Abertura estável, isolamento de regressões e rollback confiável | — |
-| v0.1 — Menu principal | Apartment, fonte, papel, seleção e perfil legíveis em 1080p/1440p | M0 |
-| v0.2 — Submenus | War Zone, Armory, Upgrades, diário, extras e opções validados | v0.1 |
-| v0.3 — Briefing | Texto, objetivos e janela de vídeo sem sobreposição | v0.1 e M0 |
-| v0.4 — HUD e Crackhouse | HUD, legendas e texturas selecionadas na primeira missão | M0; briefing testável |
-| v0.5 — Vídeos dos menus | Transições e briefings maiores, enquadramento e áudio preservados | v0.2 e v0.3 |
+| [M0 — Base reproduzível](https://github.com/pedrobragabes/the-punisher-remaster/milestone/1) | Abertura estável, isolamento de regressões e rollback confiável | — |
+| [v0.1 — Menu principal](https://github.com/pedrobragabes/the-punisher-remaster/milestone/2) | Apartment, fonte, papel, seleção e perfil legíveis em 1080p/1440p | M0 |
+| [v0.2 — Submenus](https://github.com/pedrobragabes/the-punisher-remaster/milestone/3) | War Zone, Armory, Upgrades, diário, extras e opções validados | v0.1 |
+| [v0.3 — Briefing](https://github.com/pedrobragabes/the-punisher-remaster/milestone/4) | Texto, objetivos e janela de vídeo sem sobreposição | v0.1 e M0 |
+| [v0.4 — HUD e Crackhouse](https://github.com/pedrobragabes/the-punisher-remaster/milestone/5) | HUD, legendas e texturas selecionadas na primeira missão | M0; briefing testável |
+| [v0.5 — Vídeos dos menus](https://github.com/pedrobragabes/the-punisher-remaster/milestone/6) | Transições e briefings maiores, enquadramento e áudio preservados | v0.2 e v0.3 |
+
+Sequência inicial: [isolar travamento #1](https://github.com/pedrobragabes/the-punisher-remaster/issues/1), [componentes #2](https://github.com/pedrobragabes/the-punisher-remaster/issues/2), [fontes #4](https://github.com/pedrobragabes/the-punisher-remaster/issues/4), [Apartment #5](https://github.com/pedrobragabes/the-punisher-remaster/issues/5), [navegação #6](https://github.com/pedrobragabes/the-punisher-remaster/issues/6) e [primeira entrega #7](https://github.com/pedrobragabes/the-punisher-remaster/issues/7).
 
 ## M0 — Base reproduzível
 
