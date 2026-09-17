@@ -1,0 +1,5 @@
+-r requirements.txt
+opencv-python-headless==5.0.0.93
+pefile==2024.8.26
+keystone-engine==0.9.2
+unicorn==2.1.4

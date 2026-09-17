@@ -1,0 +1,22 @@
+name: Source checks
+on: [push, pull_request]
+jobs:
+  syntax:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - name: Python syntax
+        run: python -m compileall -q tools
+      - name: PowerShell syntax
+        shell: pwsh
+        run: |
+          Get-ChildItem -Filter *.ps1 | ForEach-Object {
+            $tokens = $null
+            $errors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile($_.FullName, [ref]$tokens, [ref]$errors) | Out-Null
+            if ($errors.Count) { throw ($errors | Out-String) }
+          }
+      # Game-dependent runtime tests run locally, never with uploaded game assets.
