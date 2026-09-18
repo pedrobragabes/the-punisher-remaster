@@ -1,6 +1,12 @@
 # Project Status
 
-**Work in Progress — updated September 16, 2026.** No integrated playable build has passed acceptance testing.
+**Work in Progress — updated September 18, 2026.** No integrated playable build has passed acceptance testing.
+
+## Latest offline work
+
+A separate, uninstalled readability candidate combines the enlarged English interface font with 30 list-row patches and 71 layout-field changes. Offline verification passed 30 constructor paths, 281 drawing rectangles, 562 mouse-coordinate cases, and 29 label-width checks. No game was launched or controlled for this work. See [scope, evidence, and limits](OFFLINE-READABILITY.md).
+
+An emulated null allocation reproduces the instruction at the recorded Bink crash site. This is a failure-path hypothesis, not confirmation of the runtime cause or a fix. All 71 videos in the test copy remain original.
 
 ## Verified outside the game
 
@@ -38,6 +44,6 @@ The installer requires `-AllowUnvalidated` to reapply the known-unstable integra
 ## Next acceptance gate
 
 Establish a reproducible baseline, identify the failure-inducing component set, then validate and release Apartment independently. Track this work in [M0](https://github.com/pedrobragabes/the-punisher-remaster/milestone/1) and [v0.1](https://github.com/pedrobragabes/the-punisher-remaster/milestone/2).
-# Latest isolated test
+## Earlier isolated test
 
-The user confirmed that the configuration without the integrated improvements works normally. A subsequent font-only candidate reached Apartment with visibly larger interface text. Row spacing still needs correction; War Zone navigation has not been confirmed. See [isolated menu diagnostics](MENU-STAGES.md) for the exact scope and pending checks. This does not resolve the integrated prototype failures below.
+The user confirmed that the configuration without the integrated improvements works normally. A subsequent candidate reached Apartment with larger interface text, and a user-driven session reached Mission Briefing with original videos. Clipping remained visible. The Apartment-only row-height revision was installed, but its final visual check was interrupted. See [isolated menu diagnostics](MENU-STAGES.md). This does not resolve the integrated prototype failures.

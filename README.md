@@ -31,6 +31,7 @@ Local research covers **167 VPP archives**, **68,395 entries**, and **26,593 tex
 
 - [Roadmap](ROADMAP.md) — staged delivery plan
 - [Current status](docs/STATUS.md) — evidence, regressions, and limitations
+- [Offline readability candidate](docs/OFFLINE-READABILITY.md) — coordinated font/layout/row-height work and bounded emulation checks
 - [Local setup](docs/SETUP.md) — development environment
 - [File formats](docs/FORMATS.md) — research notes and supported cases
 - [Release criteria](docs/RELEASING.md) — requirements for a testable build

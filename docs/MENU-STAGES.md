@@ -2,6 +2,8 @@
 
 **WIP. These are diagnostic candidates, not a release.**
 
+A broader [offline readability candidate](OFFLINE-READABILITY.md) was prepared on September 18. It is separate from these stages and has not been installed.
+
 The original configuration works according to user feedback. The next experiment changes only `interface.vf2` and its `interface.vbm` atlas in `fonts.ceg`. All other entries in `misc.vpp` are verified byte-for-byte against the source archive.
 
 ## Current evidence

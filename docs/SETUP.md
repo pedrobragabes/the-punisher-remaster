@@ -27,6 +27,9 @@ Create a complete, separate game copy at `work/game`, excluding `remaster-lab` i
 | `build_video_fix.py` | Version-locked video-size patch |
 | `verify_ui_pack.py` | Font, hash, and emulated x86 checks |
 | `verify_menu_videos.py` | Video checks and endpoint-frame decoding |
+| `build_readability.py` | Prepare an English menu candidate without installing or launching |
+| `verify_readability.py` | Offline constructor, drawing, hit-area, and layout checks |
+| `audit_menu_videos.py` | Video inventory and isolated allocator-failure emulation |
 
 For video conversion, obtain [RAD Video Tools](https://www.radgametools.com/bnkdown.htm) and provide `radvideo64.exe` at `work/radtools/portable/`, together with its required components. RAD tools are not bundled here.
 
